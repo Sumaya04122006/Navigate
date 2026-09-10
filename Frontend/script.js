@@ -109,7 +109,7 @@ analyzeButton.addEventListener("click", async function () {
         // ----------------------------------------------------
 
         const response = await fetch(
-            "http://127.0.0.1:8000/analyze",
+            "https://navigate-bwxd.onrender.com/analyze",
             {
                 method: "POST",
 
