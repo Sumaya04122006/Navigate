@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>NAVIGATE — From Opportunity to Action</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <header class="navbar">
+        <div class="logo">
+            NAVIGATE<span>.</span>
+        </div>
+
+        <div class="tagline">
+            From Opportunity to Action
+        </div>
+    </header>
+
+
+    <main class="container">
+
+        <!-- HERO -->
+        <section class="hero">
+            <div class="badge">
+                AI OPPORTUNITY ANALYSIS
+            </div>
+
+            <h1>
+                Turn opportunities into
+                <span>action.</span>
+            </h1>
+
+            <p>
+                Paste an internship, scholarship, competition, or program URL.
+                NAVIGATE retrieves the opportunity, extracts its requirements,
+                evaluates your eligibility, identifies gaps, and creates a
+                personalized action plan.
+            </p>
+        </section>
+
+
+        <!-- STUDENT PROFILE -->
+        <section class="card">
+
+            <div class="section-heading">
+                <div>
+                    <p class="eyebrow">01</p>
+                    <h2>Your Profile</h2>
+                </div>
+
+                <p class="section-description">
+                    Tell NAVIGATE about yourself.
+                </p>
+            </div>
+
+
+            <div class="form-grid">
+
+                <div class="input-group full-width">
+                    <label for="url">
+                        Opportunity URL
+                    </label>
+
+                    <input
+                        type="url"
+                        id="url"
+                        placeholder="https://example.com/internship"
+                    >
+                </div>
+
+
+                <div class="input-group">
+                    <label for="degree">
+                        Degree
+                    </label>
+
+                    <input
+                        type="text"
+                        id="degree"
+                        placeholder="Bachelor of Information Technology"
+                    >
+                </div>
+
+
+                <div class="input-group">
+                    <label for="year">
+                        Current Year
+                    </label>
+
+                    <input
+                        type="text"
+                        id="year"
+                        placeholder="2"
+                    >
+                </div>
+
+
+                <div class="input-group">
+                    <label for="cgpa">
+                        CGPA
+                    </label>
+
+                    <input
+                        type="text"
+                        id="cgpa"
+                        placeholder="3.98"
+                    >
+                </div>
+
+
+                <div class="input-group">
+                    <label for="skills">
+                        Skills
+                    </label>
+
+                    <input
+                        type="text"
+                        id="skills"
+                        placeholder="Python, SQL, AI, Git"
+                    >
+                </div>
+
+            </div>
+
+
+            <button id="analyzeButton" class="analyze-button">
+                ANALYZE OPPORTUNITY
+            </button>
+
+            <div id="loading" class="loading hidden">
+                <div class="spinner"></div>
+
+                <div>
+                    <strong>NAVIGATE is analyzing...</strong>
+                    <p>
+                        Retrieving the opportunity and evaluating its requirements.
+                    </p>
+                </div>
+            </div>
+
+            <div id="errorBox" class="error-box hidden"></div>
+
+        </section>
+
+
+        <!-- RESULTS -->
+        <section id="results" class="results hidden">
+
+            <!-- OPPORTUNITY -->
+            <section class="card result-card">
+
+                <div class="section-heading">
+                    <div>
+                        <p class="eyebrow">02</p>
+                        <h2>Opportunity</h2>
+                    </div>
+                </div>
+
+
+                <div class="opportunity-header">
+
+                    <div>
+                        <h3 id="opportunityTitle">
+                            Opportunity
+                        </h3>
+
+                        <p id="organization">
+                            Organization
+                        </p>
+                    </div>
+
+                    <div id="status" class="status">
+                        —
+                    </div>
+
+                </div>
+
+
+                <div class="info-grid">
+
+                    <div class="info-box">
+                        <span>Type</span>
+                        <strong id="opportunityType">—</strong>
+                    </div>
+
+                    <div class="info-box">
+                        <span>Location</span>
+                        <strong id="location">—</strong>
+                    </div>
+
+                    <div class="info-box">
+                        <span>Deadline</span>
+                        <strong id="deadline">—</strong>
+                    </div>
+
+                    <div class="info-box">
+                        <span>Minimum CGPA</span>
+                        <strong id="minimumCgpa">—</strong>
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- REQUIREMENTS -->
+            <section class="card">
+
+                <div class="section-heading">
+                    <div>
+                        <p class="eyebrow">03</p>
+                        <h2>Official Requirements</h2>
+                    </div>
+                </div>
+
+                <div id="requirementsList" class="requirement-list"></div>
+
+            </section>
+
+
+            <!-- ELIGIBILITY -->
+            <section class="card">
+
+                <div class="section-heading">
+                    <div>
+                        <p class="eyebrow">04</p>
+                        <h2>Eligibility Analysis</h2>
+                    </div>
+                </div>
+
+
+                <div class="score-container">
+
+                    <div>
+                        <span class="score-label">
+                            Requirement Match
+                        </span>
+
+                        <div class="score">
+                            <span id="matchScore">—</span>
+                            <small>%</small>
+                        </div>
+                    </div>
+
+                    <div class="score-note">
+                        Based only on requirements that NAVIGATE
+                        could assess from the available information.
+                    </div>
+
+                </div>
+
+
+                <div id="eligibilityList" class="eligibility-list"></div>
+
+            </section>
+
+
+            <!-- GAPS -->
+            <section class="card">
+
+                <div class="section-heading">
+                    <div>
+                        <p class="eyebrow">05</p>
+                        <h2>Gaps & Missing Information</h2>
+                    </div>
+                </div>
+
+
+                <div id="missingList" class="gap-list"></div>
+
+            </section>
+
+
+            <!-- ACTION PLAN -->
+            <section class="card">
+
+                <div class="section-heading">
+                    <div>
+                        <p class="eyebrow">06</p>
+                        <h2>Your Action Plan</h2>
+                    </div>
+                </div>
+
+
+                <div id="currentPosition" class="current-position"></div>
+
+                <div id="actionPlan" class="action-plan"></div>
+
+            </section>
+
+
+            <!-- RECOMMENDATIONS -->
+            <section class="card">
+
+                <div class="section-heading">
+                    <div>
+                        <p class="eyebrow">07</p>
+                        <h2>Recommended Preparation</h2>
+                    </div>
+                </div>
+
+
+                <div class="two-column">
+
+                    <div>
+                        <h3>Skills to Strengthen</h3>
+                        <ul id="skillsList"></ul>
+                    </div>
+
+                    <div>
+                        <h3>Application Preparation</h3>
+                        <ul id="applicationList"></ul>
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- CONDITIONAL -->
+            <section class="card">
+
+                <div class="section-heading">
+                    <div>
+                        <p class="eyebrow">08</p>
+                        <h2>Conditional Requirements</h2>
+                    </div>
+                </div>
+
+                <div id="conditionalList" class="requirement-list"></div>
+
+            </section>
+
+
+            <!-- CHECKLIST -->
+            <section class="card">
+
+                <div class="section-heading">
+                    <div>
+                        <p class="eyebrow">09</p>
+                        <h2>Readiness Checklist</h2>
+                    </div>
+                </div>
+
+                <ul id="readinessList" class="checklist"></ul>
+
+            </section>
+
+
+            <!-- SOURCE -->
+            <section class="card source-card">
+
+                <div class="section-heading">
+                    <div>
+                        <p class="eyebrow">10</p>
+                        <h2>Source Evidence</h2>
+                    </div>
+                </div>
+
+                <p class="source-url">
+                    <strong>Source:</strong>
+                    <a
+                        id="sourceUrl"
+                        href="#"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        —
+                    </a>
+                </p>
+
+                <div id="evidence" class="evidence">
+                    Source webpage preview will appear here.
+                </div>
+
+            </section>
+
+        </section>
+
+    </main>
+
+
+    <footer>
+        <p>
+            NAVIGATE — From Opportunity to Action
+        </p>
+
+        <span>
+            AI-powered opportunity analysis
+        </span>
+    </footer>
+
+
+    <script src="script.js"></script>
+
+</body>
+</html>
