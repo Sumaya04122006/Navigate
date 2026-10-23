@@ -1,262 +1,334 @@
-# 🚀 NAVIGATE — From Opportunity to Action
 
-https://navigatee.vercel.app/
+<div align="center">
 
-### AI-Powered Opportunity Eligibility & Action Planning System
+# 🧭 NAVIGATE
 
-NAVIGATE helps students answer three important questions:
+### FROM OPPORTUNITY TO ACTION
 
-- Am I eligible?
-- Why or why not?
-- What should I do next?
+**AI-Powered Opportunity Eligibility & Action Planning**
 
----
+Turn opportunity requirements into eligibility insights, requirement gaps, and a practical plan for what to do next.
 
-# 💡 What is NAVIGATE?
+<br>
 
-Students find internships, scholarships, fellowships, and other opportunities online, but eligibility requirements are often buried inside long and complex opportunity pages.
+[**↗ OPEN LIVE DEMO**](https://navigatee.vercel.app/)
 
-NAVIGATE converts an opportunity URL and a student's profile into a structured eligibility analysis and personalized action plan.
+<br>
 
-## Input
+`AI REQUIREMENT EXTRACTION` · `PYTHON RULE ENGINE` · `PERSONALIZED ACTION PLANNING`
 
-- Opportunity URL
-- Degree
-- Academic Year
-- CGPA
-- Skills
-
-## Output
-
-- Opportunity information
-- Official requirements
-- Eligibility result
-- Requirement gaps
-- Missing information
-- Personalized action plan
-- Recommended preparation
-- Conditional requirements
-- Source evidence
+</div>
 
 ---
 
-# 🎯 The Problem
+## ✦ The idea behind NAVIGATE
 
-Finding an opportunity is easy.
+Finding an opportunity is one thing. Knowing whether you qualify is another.
 
-**Understanding whether you actually qualify is not.**
+Internships, scholarships, fellowships, and student programs often have requirements scattered across lengthy webpages. Students must interpret those requirements, compare them against their own profiles, identify missing qualifications, and decide what to do next.
 
-Students often have to manually:
+**NAVIGATE brings those steps into one structured workflow.**
 
-- Read long opportunity descriptions
-- Find eligibility requirements
-- Compare their CGPA
-- Check their academic year
-- Compare required skills
-- Identify missing requirements
-- Decide what to improve before applying
+Provide an opportunity URL and your academic profile. NAVIGATE extracts available requirements, evaluates them against your profile, identifies gaps, and generates a personalized action plan.
 
-Even after doing all this, a student may still not know:
+> **Not just “Am I eligible?” — but “Why, and what should I do next?”**
 
-> "If I'm not eligible today, what should I do to become ready?"
+<div align="center">
+
+| 🔎 UNDERSTAND | ⚖️ EVALUATE | 🧩 IDENTIFY | 🧭 ACT |
+|:---:|:---:|:---:|:---:|
+| Extract requirements | Apply Python rules | Find requirement gaps | Generate next steps |
+
+</div>
+
+## 🚀 Try it
+
+<div align="center">
+
+### Your next opportunity, made clearer.
+
+[**OPEN NAVIGATE →**](https://navigatee.vercel.app/)
+
+Explore the live application to see the workflow in action.
+
+</div>
 
 ---
 
-# 💡 The Key Idea
+## 🧠 The engineering idea that makes NAVIGATE different
 
-NAVIGATE is not simply an AI chatbot.
+NAVIGATE separates language understanding from eligibility decisions.
 
-Instead of asking an LLM to make a simple YES/NO decision, NAVIGATE separates the process into different stages:
+Rather than asking a language model to decide everything in one step, the system uses different components for different jobs.
 
 ```text
-AI → Extracts requirements
-        ↓
-Python → Evaluates eligibility
-        ↓
-AI → Generates an action plan
+        OPPORTUNITY WEBPAGE
+                 │
+                 ▼
+       ┌───────────────────┐
+       │   AI EXTRACTOR    │
+       │ Understands text  │
+       └─────────┬─────────┘
+                 │
+                 ▼
+       ┌───────────────────┐
+       │ STRUCTURED DATA   │
+       │ Requirements      │
+       └─────────┬─────────┘
+                 │
+                 ▼
+       ┌───────────────────┐
+       │ PYTHON RULE ENGINE│
+       │ Evaluates profile │
+       └─────────┬─────────┘
+                 │
+                 ▼
+       ┌───────────────────┐
+       │   GAP ANALYSIS    │
+       │ Missing criteria  │
+       └─────────┬─────────┘
+                 │
+                 ▼
+       ┌───────────────────┐
+       │   AI ACTION PLAN  │
+       │ Practical next steps
+       └─────────┬─────────┘
+                 │
+                 ▼
+       ┌───────────────────┐
+       │ RESULTS + EVIDENCE│
+       └───────────────────┘
 ```
 
 ### AI interprets. Python decides. AI plans.
 
-This separation makes the eligibility evaluation more structured, consistent, and explainable.
+- **AI interprets:** extracts requirements from retrieved opportunity content.
+- **Python evaluates:** applies deterministic rules to the structured requirements and student profile.
+- **AI plans:** turns identified gaps into actionable preparation guidance.
+
+This separation makes the evaluation logic more inspectable than relying on a single unconstrained AI-generated yes/no answer. Its reliability still depends on correct requirement extraction, appropriate rules, and accurate source information.
 
 ---
 
-# ⚙️ How NAVIGATE Works
+## ⚙️ How the system works
 
-```text
-┌─────────────────────────┐
-│    OPPORTUNITY URL      │
-└────────────┬────────────┘
-             ↓
-┌─────────────────────────┐
-│     WEB RETRIEVAL       │
-│ Requests + BeautifulSoup│
-└────────────┬────────────┘
-             ↓
-┌─────────────────────────┐
-│   AI REQUIREMENT        │
-│      EXTRACTION         │
-└────────────┬────────────┘
-             ↓
-┌─────────────────────────┐
-│ STRUCTURED REQUIREMENTS │
-└────────────┬────────────┘
-             ↓
-┌─────────────────────────┐
-│ PYTHON DETERMINISTIC    │
-│   ELIGIBILITY ENGINE    │
-└────────────┬────────────┘
-             ↓
-┌─────────────────────────┐
-│      GAP ANALYSIS       │
-└────────────┬────────────┘
-             ↓
-┌─────────────────────────┐
-│    AI ACTION PLANNER    │
-└────────────┬────────────┘
-             ↓
-┌─────────────────────────┐
-│   RESULTS + EVIDENCE    │
-└─────────────────────────┘
+```mermaid
+flowchart TD
+    A(["Opportunity URL"]) --> B["Retrieve webpage"]
+    B --> C["Parse page content"]
+    C --> D["AI requirement extraction"]
+    D --> E[("Structured requirements")]
+    E --> F["Python eligibility engine"]
+    G["Student profile"] --> F
+    F --> H["Requirement-by-requirement results"]
+    H --> I["Gap analysis"]
+    I --> J["AI action planner"]
+    J --> K["Eligibility summary"]
+    J --> L["Personalized action plan"]
+    D --> M["Source evidence"]
+    M --> K
+    H --> K
+    L --> N(["Student's next steps"])
+
+    classDef source fill:#102A43,stroke:#38BDF8,color:#FFFFFF,stroke-width:2px
+    classDef ai fill:#173D46,stroke:#2DD4BF,color:#FFFFFF,stroke-width:2px
+    classDef logic fill:#202B50,stroke:#818CF8,color:#FFFFFF,stroke-width:2px
+    classDef output fill:#3B2F16,stroke:#FBBF24,color:#FFFFFF,stroke-width:2px
+
+    class A,B,C source
+    class D,J ai
+    class E,F,G,H,I logic
+    class K,L,M,N output
 ```
 
----
+### 01 · Opportunity retrieval
 
-# 🧠 Core Features
+The application accepts an opportunity URL and attempts to retrieve its webpage content.
 
-## 1. Opportunity Retrieval
+The retrieval layer uses Python's `Requests` library, while `BeautifulSoup` parses the returned HTML.
 
-NAVIGATE retrieves information from the opportunity webpage provided by the student.
+### 02 · AI requirement extraction
 
-## 2. AI Requirement Extraction
+AI processes the retrieved content to identify eligibility criteria and convert them into structured requirements.
 
-The retrieved content is processed by AI to identify explicitly stated requirements and convert them into structured data.
+Examples include:
 
-## 3. Deterministic Eligibility Engine
+- Minimum CGPA
+- Eligible degree or field of study
+- Academic year or graduation status
+- Required skills
+- Other stated conditions
+- Requirements needing clarification
 
-The extracted requirements are evaluated using Python-based rules.
+### 03 · Deterministic eligibility evaluation
 
-NAVIGATE can classify requirements as:
+The Python eligibility engine compares extracted criteria with the student's profile.
 
-- ✅ PASS
-- ❌ FAIL
-- ⚠️ NEEDS INPUT
-- 🔶 CONDITIONAL
+Where a requirement can be evaluated using available information and a defined rule, the engine can return a structured result. Unknown, ambiguous, or conditional criteria should not automatically be treated as satisfied.
 
-The overall eligibility result can be:
+### 04 · Gap analysis
 
-- ELIGIBLE
-- NOT ELIGIBLE
-- NEEDS REVIEW
+NAVIGATE identifies which requirements appear satisfied, which are not met, and which need more information or verification.
 
-## 4. Gap Analysis
+### 05 · Personalized action planning
 
-NAVIGATE identifies requirements that:
+The system uses the identified gaps to generate practical preparation guidance rather than ending at an eligibility label.
 
-- The student does not currently meet
-- Require additional information
-- Require further verification
-- May prevent eligibility
+### 06 · Results and source evidence
 
-## 5. Personalized Action Plan
-
-Instead of stopping at **"Not Eligible"**, NAVIGATE generates practical next steps based on the identified gaps.
-
-## 6. Source Evidence
-
-The opportunity source is retained so that the analysis can be connected back to the information used by the system.
+The final analysis brings together the eligibility summary, requirement-level results, gaps, missing information, and available source evidence so the student can review the reasoning.
 
 ---
 
-# 🧪 Example
+## 🎯 Eligibility is more than yes or no
 
-## Student Profile
+NAVIGATE distinguishes between individual requirement results and the overall eligibility assessment.
 
-| Field | Example |
-|---------|---------|
+### Requirement-level outcomes
+
+| Status | Meaning |
+|---|---|
+| ✅ `PASS` | The available profile satisfies the evaluated criterion. |
+| ❌ `FAIL` | The available profile does not satisfy the evaluated criterion. |
+| ⚠️ `NEEDS INPUT` | Required profile information is missing or insufficient. |
+| 🔶 `CONDITIONAL` | The requirement depends on a condition that must be clarified or verified. |
+
+### Overall outcomes
+
+| Result | Interpretation |
+|---|---|
+| 🟢 `ELIGIBLE` | Evaluated criteria support eligibility, subject to the completeness and accuracy of the available information. |
+| 🔴 `NOT ELIGIBLE` | At least one decisive requirement is not met under the applicable rules. |
+| 🟡 `NEEDS REVIEW` | Missing, ambiguous, conditional, or otherwise unresolved information prevents a confident conclusion. |
+
+A critical distinction: **missing information is not the same as failing a requirement.** A student should not be classified as ineligible merely because their profile does not contain enough information to evaluate a criterion.
+
+---
+
+## 🧩 What NAVIGATE takes in and produces
+
+<details>
+<summary><strong>📥 Input — Student profile and opportunity</strong></summary>
+
+### Opportunity
+
+- Opportunity URL
+
+### Student profile
+
+- Degree
+- Academic year
+- CGPA
+- Skills
+
+The quality of the analysis depends on the accuracy of the supplied profile and the information that can be retrieved from the opportunity page.
+
+</details>
+
+<details>
+<summary><strong>📤 Output — Eligibility analysis</strong></summary>
+
+The intended results workflow includes:
+
+- Extracted opportunity information
+- Identified official requirements
+- Overall eligibility result
+- Requirement-by-requirement status
+- Gaps and unmet criteria
+- Missing information
+- Conditional requirements
+- Personalized action plan
+- Recommended preparation
+- Available source evidence
+
+</details>
+
+---
+
+## 🧪 Example scenario
+
+Consider a student evaluating an opportunity that requires a particular academic year, an eligible degree, a minimum CGPA, and specified technical skills.
+
+### Example student profile
+
+| Field | Example value |
+|---|---|
 | Degree | Bachelor of Information Technology |
-| Academic Year | 2 |
-| CGPA | 3.98 |
+| Academic year | Year 2 |
+| CGPA | 3.98 / 4.00 |
 | Skills | Python, SQL, AI, HTML, CSS, JavaScript, Git, GitHub |
 
-## Example Analysis
+### Illustrative requirement analysis
 
-| Requirement | Result |
-|------------|---------|
-| CGPA Requirement | ✅ PASS |
-| Degree Requirement | ✅ PASS / ⚠️ REVIEW |
-| Academic Year | ❌ FAIL |
-| Other Requirements | ⚠️ NEEDS INPUT |
+| Requirement | Result | Reason |
+|---|---|---|
+| Minimum CGPA | ✅ PASS | The example profile meets the stated threshold. |
+| Eligible degree | ⚠️ NEEDS REVIEW | The opportunity's degree wording may need interpretation. |
+| Academic year | ❌ FAIL | The example opportunity requires a later academic year. |
+| Additional conditions | ⚠️ NEEDS INPUT | Further profile information or verification is needed. |
 
-NAVIGATE does not simply return:
+*This is an illustrative scenario, not a result from a live opportunity. Actual results depend on the opportunity's published requirements and the rules applied.*
 
-```text
-❌ NOT ELIGIBLE
+### From a result to an action plan
+
+Instead of stopping at `NOT ELIGIBLE`, NAVIGATE can help organize the next steps:
+
+1. **Understand the blocker:** identify the academic-year requirement that is not currently met.
+2. **Verify the other criteria:** resolve any ambiguity around the accepted degree and additional conditions.
+3. **Prepare strategically:** develop relevant skills and projects while waiting to meet the academic requirement.
+4. **Reassess later:** evaluate the opportunity again when the student's circumstances change.
+
+The goal is not to promise that a student will eventually qualify. It is to make the current decision and the remaining work clearer.
+
+---
+
+## 🏗️ System architecture
+
+```mermaid
+flowchart LR
+    U(["Student"]) --> V["Vercel<br/>Frontend"]
+    V -->|"HTTPS API requests"| R["Render<br/>FastAPI backend"]
+    R --> W["Web retrieval<br/>Requests + BeautifulSoup"]
+    R --> O["OpenRouter<br/>AI API"]
+    W --> X["Retrieved page content"]
+    X --> O
+    O --> Q["Structured requirements"]
+    Q --> P["Python eligibility engine"]
+    P --> G["Gap analysis"]
+    G --> A["AI action planner"]
+    A --> R
+    R --> V
+    V --> Z(["Results interface"])
+
+    classDef front fill:#102A43,stroke:#38BDF8,color:#FFFFFF,stroke-width:2px
+    classDef ai fill:#173D46,stroke:#2DD4BF,color:#FFFFFF,stroke-width:2px
+    classDef backend fill:#202B50,stroke:#818CF8,color:#FFFFFF,stroke-width:2px
+    classDef result fill:#3B2F16,stroke:#FBBF24,color:#FFFFFF,stroke-width:2px
+
+    class U,V,Z front
+    class O,W,X,Q,A ai
+    class R,P,G backend
 ```
 
-It explains **why**, identifies the gap, and generates an action plan.
+### Technology stack
+
+| Layer | Technology | Purpose |
+|---|---|---|
+| Frontend | HTML, CSS, JavaScript | User interface and profile input |
+| Backend | Python, FastAPI | API and application orchestration |
+| Retrieval | Requests | Fetch accessible webpages |
+| HTML parsing | BeautifulSoup | Extract webpage text and content |
+| AI integration | OpenRouter | AI-powered requirement extraction and planning |
+| Eligibility logic | Python | Deterministic rule-based evaluation |
+| Validation | Pydantic | Structured data validation |
+| Configuration | python-dotenv | Local environment variable loading |
+| Version control | Git, GitHub | Source code and change history |
+| Frontend hosting | Vercel | Deployed web interface |
+| Backend hosting | Render | Deployed FastAPI service |
 
 ---
 
-# 🏗️ System Architecture
-
-```text
-USER
-  │
-  ▼
-┌─────────────┐
-│   VERCEL    │
-│  FRONTEND   │
-└──────┬──────┘
-       │ HTTPS
-       ▼
-┌─────────────┐
-│   RENDER    │
-│   FASTAPI   │
-└──────┬──────┘
-       │
- ┌─────┴─────┐
- ▼           ▼
-WEB       OPENROUTER
-RETRIEVAL
- │
- └─────┬─────┘
-       ▼
-PYTHON ELIGIBILITY
-      ENGINE
-       │
-       ▼
-   GAP ANALYSIS
-       │
-       ▼
- AI ACTION PLAN
-       │
-       ▼
-  FINAL RESULTS
-```
-
----
-
-# 🛠️ Technology Stack
-
-| Layer | Technology |
-|---------|---------|
-| Frontend | HTML, CSS, JavaScript |
-| Backend | Python, FastAPI |
-| Web Retrieval | Requests |
-| Web Parsing | BeautifulSoup |
-| AI | OpenRouter |
-| Eligibility Engine | Python deterministic rules |
-| Data Validation | Pydantic |
-| Environment Variables | python-dotenv |
-| Version Control | Git + GitHub |
-| Frontend Deployment | Vercel |
-| Backend Deployment | Render |
-
----
-
-# 📁 Project Structure
+## 💻 Project structure
 
 ```text
 NAVIGATE/
@@ -276,214 +348,206 @@ NAVIGATE/
 
 ---
 
-# ▶️ Run Locally
+## ▶️ Run NAVIGATE locally
 
-## 1. Clone the Repository
+### Prerequisites
+
+- Python installed
+- Git installed
+- An OpenRouter API key
+- Network access for the AI API and accessible opportunity webpages
+
+### 1. Clone the repository
 
 ```bash
-git clone https://github.com/YOUR-USERNAME/NAVIGATE.git
-cd NAVIGATE
+git clone https://github.com/Sumaya04122006/Navigate.git
+cd Navigate
 ```
 
-> Replace `YOUR-USERNAME` with your actual GitHub username.
-
----
-
-## 2. Create a Virtual Environment
+### 2. Create a virtual environment
 
 ```bash
 python -m venv .venv
 ```
 
----
+### 3. Activate the environment
 
-## 3. Activate the Virtual Environment
+**Windows — Command Prompt**
 
-### Windows
-
-```bash
-.venv\Scripts\activate
+```bat
+.venv\Scripts\activate.bat
 ```
 
-### macOS/Linux
+**Windows — PowerShell**
+
+```powershell
+.venv\Scripts\Activate.ps1
+```
+
+**macOS / Linux**
 
 ```bash
 source .venv/bin/activate
 ```
 
----
-
-## 4. Install Dependencies
+### 4. Install dependencies
 
 ```bash
 pip install -r Backend/requirements.txt
 ```
 
----
+### 5. Configure the API key
 
-## 5. Configure the API Key
-
-Create:
-
-```text
-Backend/.env
-```
-
-Add:
+Create a file named `Backend/.env`:
 
 ```env
 OPENROUTER_API_KEY=your_api_key_here
 ```
 
-⚠️ Never commit your API key to GitHub.
+Keep the API key private. Never commit `.env` to GitHub or expose the key in frontend JavaScript.
 
----
+### 6. Start the backend
 
-## 6. Start the Backend
+From the repository root, run:
 
 ```bash
 python -m uvicorn Backend.main:app --reload
 ```
 
-The API will run at:
+If your project uses a different Python package layout, adjust the import path to match the actual backend structure.
 
-```text
-http://127.0.0.1:8000
-```
+### 7. Open the API documentation
 
-FastAPI documentation:
+Visit:
 
-```text
-http://127.0.0.1:8000/docs
-```
+- API: `http://127.0.0.1:8000`
+- Interactive API docs: `http://127.0.0.1:8000/docs`
+
+The frontend may need its API base URL configured for the local backend. Refer to the actual application configuration before assuming that the deployed frontend automatically targets localhost.
 
 ---
 
-# 🌐 Deployment
+## 🌐 Deployment
 
-NAVIGATE is deployed using separate frontend and backend services.
+NAVIGATE uses a separated frontend and backend deployment architecture.
 
-| Component | Platform |
-|------------|------------|
+```text
+                GITHUB REPOSITORY
+                   /         \
+                  /           \
+                 ▼             ▼
+             VERCEL          RENDER
+             Frontend        FastAPI
+                 │              │
+                 └── HTTPS API ─┘
+                                │
+                                ▼
+                            OPENROUTER
+```
+
+| Component | Deployment |
+|---|---|
+| Live application | [navigatee.vercel.app](https://navigatee.vercel.app/) |
 | Frontend | Vercel |
 | Backend | Render |
 | AI API | OpenRouter |
-| Source Code | GitHub |
+| Source repository | [Sumaya04122006/Navigate](https://github.com/Sumaya04122006/Navigate) |
 
-## Deployment Flow
-
-```text
-GitHub
-   │
-   ├──────────────► Vercel
-   │                 │
-   │                 ▼
-   │             Frontend
-   │                 │
-   │               HTTPS
-   │                 │
-   └──────────────► Render
-                     │
-                     ▼
-                  FastAPI
-                     │
-                     ▼
-                 OpenRouter
-```
+Deployment requires the frontend API endpoint and backend environment variables to be configured correctly. The backend should keep AI credentials server-side.
 
 ---
 
-# 🔐 Security
+## 🔐 Security and reliability considerations
 
-Sensitive credentials are stored using environment variables rather than being hard-coded into the application.
+- Store API keys in environment variables.
+- Exclude `.env`, `.venv/`, and `__pycache__/` from version control.
+- Keep private credentials out of browser-delivered code.
+- Validate user input and AI-generated structured data.
+- Treat retrieved webpage content as untrusted input.
+- Handle retrieval failures, malformed responses, and unavailable AI services.
+- Avoid presenting unsupported interpretations as official eligibility decisions.
 
-The repository excludes:
-
-```text
-.env
-.venv/
-__pycache__/
-```
-
-API keys should never be committed to GitHub.
+An extracted requirement should ideally retain enough source context for the student to check it against the original opportunity page. A source URL alone does not guarantee that every extracted statement is correct.
 
 ---
 
-# 🎯 Current MVP
+## ⚠️ Limitations
 
-The current MVP focuses on proving the complete end-to-end workflow:
-
-```text
-URL
- ↓
-Retrieve
- ↓
-Extract Requirements
- ↓
-Evaluate Eligibility
- ↓
-Identify Gaps
- ↓
-Generate Action Plan
- ↓
-Show Evidence
-```
-
-The MVP intentionally focuses on the core problem and working pipeline instead of adding unnecessary features.
-
----
-
-# ⚠️ Limitations
-
-NAVIGATE depends on the accessibility and structure of the source webpage.
+NAVIGATE depends on the content available to its retrieval and extraction pipeline.
 
 Potential limitations include:
 
-- Websites that block automated requests
-- JavaScript-heavy webpages
-- Login-protected opportunities
-- Incomplete opportunity information
-- Ambiguous requirements
-- Requirements that require external verification
+- Websites that block automated requests.
+- JavaScript-rendered or dynamically loaded content.
+- Login-protected pages and inaccessible documents.
+- Ambiguous, contradictory, or outdated requirements.
+- AI extraction errors or incomplete content.
+- Eligibility criteria that require human interpretation.
+- Missing student information.
+- API availability, latency, and usage costs.
 
-When information cannot be confidently determined, NAVIGATE can classify it as:
+The Python eligibility engine can apply its rules consistently, but deterministic evaluation does not fix an incorrect or incomplete requirement extracted upstream.
 
-- ⚠️ NEEDS INPUT
-- 🔶 CONDITIONAL
-- 🟡 NEEDS REVIEW
-
-rather than assuming an answer.
+**NAVIGATE provides decision support, not an official eligibility guarantee.** Students should verify important requirements against the opportunity provider's current official information.
 
 ---
 
-# 🔮 Future Development
+## 🔭 Future development
 
-Potential future improvements include:
+<details>
+<summary><strong>Phase 1 — Reliability and evaluation</strong></summary>
 
-- Persistent student profiles
-- More opportunity sources
-- Improved source verification
-- Opportunity tracking
-- Deadline reminders
-- Resume/CV integration
-- Skill-gap recommendations
-- Application readiness monitoring
-- Improved dynamic webpage handling
+- [ ] Build a test dataset of real opportunity requirements.
+- [ ] Measure extraction accuracy against manually verified requirements.
+- [ ] Test eligibility decisions against known cases.
+- [ ] Track incorrect passes, incorrect failures, and unresolved cases.
+- [ ] Improve source evidence and error handling.
+
+</details>
+
+<details>
+<summary><strong>Phase 2 — Student readiness</strong></summary>
+
+- [ ] Persistent student profiles.
+- [ ] Saved opportunities and comparison.
+- [ ] Deadline tracking and reminders.
+- [ ] CV and resume integration.
+- [ ] Skill-gap and preparation tracking.
+
+</details>
+
+<details>
+<summary><strong>Phase 3 — Expanded opportunity intelligence</strong></summary>
+
+- [ ] Support more opportunity formats and sources.
+- [ ] Improve handling of dynamic webpages and documents.
+- [ ] Add structured policy and requirement verification.
+- [ ] Explore application-readiness monitoring.
+- [ ] Improve multilingual accessibility.
+
+</details>
 
 ---
 
-# 👩‍💻 Developer
+## 👩‍💻 Developer
 
-**Sumaya Fathima**  
-Bachelor of Information Technology — AI  
-Liwa University, UAE
+**Sumaya Fathima**
+
+Bachelor of Information Technology — Artificial Intelligence  
+Liwa University · Abu Dhabi, UAE
+
+[GitHub](https://github.com/Sumaya04122006) · [LinkedIn](https://www.linkedin.com/in/sumaya-fathima-7148063a9)
 
 ---
 
-# ⭐ Project Vision
+<div align="center">
 
-> "Students don't just need to find opportunities. They need to understand where they stand and what to do next."
+## 🧭 NAVIGATE
 
-## NAVIGATE
+### Don't just find opportunities. Understand your next move.
 
-### From Opportunity to Action
+**From Opportunity to Action.**
+
+[**Explore the live application →**](https://navigatee.vercel.app/)
+
+</div>
